@@ -1,0 +1,93 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/sematext-cloud-openapi-original.json
+- openapi/sematext-openapi.yml
+vocabulary:
+  name: Sematext Domain Vocabulary
+  description: 'Terms declared by Sematext''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-13'
+  terms:
+  - term: App tokens
+    definition: 'Resource group in the contract; its operation PUT /users-web/api/v3/apps/{appId}/tokens/{tokenId}: Update app token (enable/disable
+      or name)'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: App IPs
+    definition: 'Resource group in the contract; its operation PUT /users-web/api/v3/apps/{token}/ips/{ipId}: The new IP is added before the old
+      one is removed.'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Notifications
+    definition: 'Resource group in the contract; its operation PUT /users-web/api/v3/notifications/integrations/{updateableNotificationIntegrationId}/disable:
+      Disable the notification hook'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Alerts
+    definition: 'Resource group in the contract; its operation DELETE /users-web/api/v3/alerts/{updateableAlertId}: Delete alert rule'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Subscriptions
+    definition: 'Resource group in the contract; its operation PUT /users-web/api/v3/subscriptions/{updateableSubscriptionId}: Toggle subscription
+      status'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Apps
+    definition: 'Resource group in the contract; its operation GET /users-web/api/v3/apps/types: Get all App types supported for the account identified
+      with apiKey'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Billing
+    definition: 'Resource group in the contract; its operation GET /users-web/api/v3/billing/availablePlans: Get available plans'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Alert Notifications
+    definition: 'Resource group in the contract; its operation POST /users-web/api/v3/notifications/alerts: Default value of interval is 1d'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Reset Password
+    definition: 'Resource group in the contract; its operation POST /users-web/api/v3/account/password/reset: Reset Password'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: App guests
+    definition: 'Resource group in the contract; its operation POST /users-web/api/v3/apps/guests: Invite guests to an app'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Experience App
+    definition: 'Resource group in the contract; its operation POST /users-web/api/v3/apps: Create Experience App'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Logs App
+    definition: 'Resource group in the contract; its operation POST /logsene-reports/api/v3/apps: Create Logs App'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Logs App usage
+    definition: 'Resource group in the contract; its operation GET /logsene-reports/api/v3/apps/{appId}/usage/{from}/{to}: getForRange'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Tags
+    definition: 'Resource group in the contract; its operation GET /spm-reports/api/v3/apps/{appIds}/metrics/filters: Gets values for specified
+      tags for the given application identifiers appearing in the given time frame.'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json
+  - term: Monitoring App
+    definition: 'Resource group in the contract; its operation POST /spm-reports/api/v3/apps: Create Monitoring App'
+    tags:
+    - Resource Group
+    source: openapi/sematext-cloud-openapi-original.json

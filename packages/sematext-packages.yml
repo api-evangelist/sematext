@@ -1,0 +1,35 @@
+name: Sematext Cloud API client libraries
+generated: '2026-10-13'
+method: searched
+source: https://sematext.com/docs/api/ (API Client SDKs section) plus registry lookups
+packages:
+- name: '@sematext/sematext-api-client'
+  registry: npm
+  url: https://www.npmjs.com/package/@sematext/sematext-api-client
+  language: JavaScript
+  official: true
+  version: 0.5.0
+  published: '2022-07-28'
+  source_code: https://github.com/sematext/sematext-api-client-javascript
+- name: sematext-api-client-python
+  registry: pypi
+  url: https://pypi.org/project/sematext-api-client-python/
+  language: Python
+  official: true
+  version: 0.5.0
+  source_code: https://github.com/sematext/sematext-api-client-python
+- name: github.com/sematext/sematext-api-client-go
+  registry: go
+  url: https://pkg.go.dev/github.com/sematext/sematext-api-client-go
+  language: Go
+  official: true
+  version: v1.5.0
+  published: '2022-07-28'
+  source_code: https://github.com/sematext/sematext-api-client-go
+- name: SematextCloud
+  registry: rubygems
+  url: https://rubygems.org/gems/SematextCloud
+  language: Ruby
+  official: true
+  version: 0.5.0
+  source_code: https://github.com/sematext/sematext-api-client-ruby

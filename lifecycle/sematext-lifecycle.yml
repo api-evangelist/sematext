@@ -1,0 +1,8 @@
+name: Sematext Cloud API lifecycle
+generated: '2026-10-13'
+method: searched
+source: https://apps.sematext.com/users-web/api-docs
+versioning: URI path versioning (/users-web/api/v3, /logsene-reports/api/v3, /spm-reports/api/v3); info.version v3
+deprecation: No published deprecation or sunset policy found.
+status_page: https://status.sematext.com/
+changelog: https://sematext.com/docs/changelog/

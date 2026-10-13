@@ -1,23 +1,146 @@
 aid: sematext
 name: Sematext
-description: 'Sematext is a company surfaced via the API Evangelist harvest backlog (source: market-gap:search-api,observability)
-  and added to the network as a stub for full-pipeline profiling.'
+image: https://sematext.com/wp-content/uploads/2024/10/apps.sematext.com_ui_synthetics_38609_monitors_652_runs_MacBook-Pro-_13-1.webp
+description: Sematext is an observability company offering Sematext Cloud, a SaaS
+  platform for log management, infrastructure and application monitoring, tracing,
+  synthetic monitoring and real user monitoring, with Elasticsearch-API-compatible
+  log ingestion and search and professional Solr / Elasticsearch / OpenSearch support.
+  Its Sematext Cloud REST API (v3) manages apps, tokens, alerts, subscriptions and
+  billing, and is documented in a public Swagger API Explorer in US and EU regions.
 url: https://raw.githubusercontent.com/api-evangelist/sematext/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:market-gap:search-api,observability
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-13 (local-v5; was harvest)
 specificationVersion: '0.20'
 created: '2026-10-13'
 modified: '2026-10-13'
 tags:
 - Company
-apis: []
+- Observability
+- Monitoring
+- Logging
+- Log Management
+- Elasticsearch
+- Tracing
+- Synthetic Monitoring
+- OpenTelemetry
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/sematext-agentic-access.yml
+- type: Spectral
+  url: rules/sematext-rules.yml
+- type: Vocabulary
+  url: vocabulary/sematext-vocabulary.yml
+- type: DataModel
+  url: data-model/sematext-data-model.yml
+- type: Lifecycle
+  url: lifecycle/sematext-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/sematext-problem-types.yml
+- type: Conformance
+  url: conformance/sematext-conformance.yml
+- type: LLMsTxt
+  url: llms/sematext-llms.txt
+- type: Hosts
+  url: hosts/sematext-hosts.yml
+- type: Vendors
+  url: vendors/sematext-vendors.yml
+- type: SDKs
+  url: packages/sematext-packages.yml
+- type: Packages
+  url: packages/sematext-packages.yml
+- type: StatusPage
+  url: https://status.sematext.com/
+- type: Authentication
+  url: authentication/sematext-authentication.yml
+- type: DomainSecurity
+  url: security/sematext-domain-security.yml
 - type: Website
   url: https://sematext.com
+- type: Documentation
+  url: https://sematext.com/docs/
+- type: APIReference
+  url: https://apps.sematext.com/api-explorer
+- type: GettingStarted
+  url: https://sematext.com/docs/logs/quick-start/
+- type: Support
+  url: https://sematext.com/support/
+- type: Blog
+  url: https://sematext.com/blog
+- type: GitHubOrganization
+  url: https://github.com/sematext
+- type: Pricing
+  url: https://sematext.com/pricing/
+- type: Login
+  url: https://apps.sematext.com/ui/login
+- type: TermsOfService
+  url: https://sematext.com/legal/terms-of-service/
+- type: PrivacyPolicy
+  url: https://sematext.com/legal/privacy/
+- type: ChangeLog
+  url: https://sematext.com/docs/changelog/
+apis:
+- aid: sematext:sematext-cloud-api
+  name: Sematext Cloud API
+  description: REST API (Swagger 2.0, v3) for managing Sematext Cloud apps, app tokens,
+    allowed IPs, alert rules, notifications, report subscriptions, billing plans,
+    and Logs / Monitoring app creation and usage. Authenticated with an account API
+    key in the Authorization header (apiKey <key>). EU region served at apps.eu.sematext.com.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Observability
+  - Monitoring
+  - Logging
+  - Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-openapi.yml
+  - type: OpenAPI
+    name: OpenAPI (provider-hosted)
+    url: https://apps.sematext.com/users-web/api-docs
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-logs-api
+  name: Sematext Logs API (Elasticsearch-compatible)
+  description: Elasticsearch-API-compatible endpoint for indexing log events (including
+    _bulk) and searching them, addressed by Logs App token. No standalone contract
+    is published; it follows the Elasticsearch API.
+  humanURL: https://sematext.com/docs/logs/index-events-via-sematext-api/
+  baseURL: https://logsene-receiver.sematext.com
+  tags:
+  - Logging
+  - Elasticsearch
+  - Search
+  properties:
+  - type: Documentation
+    url: https://sematext.com/docs/logs/index-events-via-sematext-api/
+  - type: Documentation
+    name: Search API
+    url: https://sematext.com/docs/logs/search-through-the-sematext-api/
+- aid: sematext:sematext-events-api
+  name: Sematext Events API
+  description: HTTP API for posting and searching events (deployments, alerts, other
+    annotations) against an App token, correlated with metrics and logs in Sematext
+    Cloud.
+  humanURL: https://sematext.com/docs/events/event-api/
+  baseURL: https://event-receiver.sematext.com
+  tags:
+  - Events
+  - Observability
+  properties:
+  - type: Documentation
+    url: https://sematext.com/docs/events/event-api/
+x-enrichment:
+  date: '2026-10-13'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v5

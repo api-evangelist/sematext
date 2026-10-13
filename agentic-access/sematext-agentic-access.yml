@@ -1,0 +1,1514 @@
+generated: '2026-10-13'
+method: generated
+source: openapi/sematext-cloud-openapi-original.json, openapi/sematext-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 94
+  by_action_class:
+    acting: 60
+    connected: 34
+  by_consequence:
+    safety-critical: 10
+    write: 46
+    read: 34
+    physical: 4
+  human_in_the_loop_required: 10
+operations:
+- path: /users-web/api/v3/apps/{appId}/tokens/{tokenId}
+  method: put
+  operationId: updateAppToken_1
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/tokens/{tokenId}
+  method: delete
+  operationId: deleteAppToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/tokens
+  method: get
+  operationId: getAppTokens_1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/{appId}/tokens
+  method: post
+  operationId: createAppToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{token}/ips/{ipId}
+  method: put
+  operationId: updateAppIp
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{token}/ips/{ipId}
+  method: delete
+  operationId: deleteAppIp
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /users-web/api/v3/notifications/integrations/{updateableNotificationIntegrationId}/disable
+  method: put
+  operationId: disableUsingPUT
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /users-web/api/v3/alerts/{updateableAlertId}
+  method: delete
+  operationId: deleteAlertRuleUsingDELETE_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/tokens/{tokenId}/regenerate
+  method: post
+  operationId: regenerateAppToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/alerts
+  method: post
+  operationId: createAlertUsingPOST_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/subscriptions/{updateableSubscriptionId}
+  method: put
+  operationId: toggleEnabledUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/subscriptions/{updateableSubscriptionId}
+  method: delete
+  operationId: deleteUsingDELETE_3
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/alerts/{updateableAlertId}/enable
+  method: put
+  operationId: enableAlertRuleUsingPUT
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/types
+  method: get
+  operationId: getAppTypesUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/billing/availablePlans
+  method: get
+  operationId: listAvailablePlansUsingGET_1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/billing/invoice/{service}/{year}/{month}
+  method: get
+  operationId: getDetailedInvoiceUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/notifications/alerts
+  method: post
+  operationId: getAlertNotificationsForUserUsingPOST
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/dashboards/{dashId}/report/send
+  method: post
+  operationId: sendDashReportUsingPOST
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{token}/ips
+  method: get
+  operationId: getAppIps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/{token}/ips
+  method: post
+  operationId: createAppIp
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/alerts
+  method: get
+  operationId: getAlertRulesForAppUsingGET_1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/notifications/integrations/{updateableNotificationIntegrationId}/enable
+  method: put
+  operationId: enableUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/subscriptions
+  method: get
+  operationId: listUsingGET_2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/billing/info/{appId}
+  method: put
+  operationId: updatePlanUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{anyStateAppId}
+  method: get
+  operationId: getUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/{anyStateAppId}
+  method: put
+  operationId: updateUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{anyStateAppId}
+  method: delete
+  operationId: deleteUsingDELETE_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/alerts/{updateableAlertId}/disable
+  method: put
+  operationId: disableAlertRuleUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /users-web/api/v3/account/password/reset
+  method: post
+  operationId: resetPasswordUsingPOST_1
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /users-web/api/v3/apps/guests
+  method: post
+  operationId: inviteAppGuestsUsingPOST_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/dashboards/{dashId}/subscription
+  method: post
+  operationId: createForDashUsingPOST_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/dashboards/{dashId}/subscription
+  method: put
+  operationId: updateForDashUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/subscription
+  method: post
+  operationId: createForAppUsingPOST_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/subscription
+  method: put
+  operationId: updateForAppUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps
+  method: get
+  operationId: listUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps
+  method: post
+  operationId: createExperienceApp_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/notifications/alerts
+  method: post
+  operationId: getAlertNotificationsForAppUsingPOST
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/users
+  method: get
+  operationId: listAppsUsersUsingGET_1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/{appId}/report/send
+  method: post
+  operationId: sendAppReportUsingPOST
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/subscriptions
+  method: get
+  operationId: listUsingGET_5
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/{anyStateAppId}/description
+  method: put
+  operationId: updateDescriptionUsingPUT
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /logsene-reports/api/v3/apps
+  method: post
+  operationId: createLogseneApplication
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /logsene-reports/api/v3/apps/{appId}/usage/{from}/{to}
+  method: get
+  operationId: getForRangeUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /spm-reports/api/v3/apps/{appIds}/metrics/filters
+  method: get
+  operationId: getUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /spm-reports/api/v3/apps
+  method: post
+  operationId: createSpmApplication
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /spm-reports/api/v3/apps/{appIds}/tags
+  method: get
+  operationId: getUsingGET_3
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /spm-reports/api/v3/apps/{appIds}/tagNames
+  method: get
+  operationId: getTagNamesUsingGET_1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/{appId}/tokens/{tokenId}
+  method: put
+  operationId: updateAppToken_1
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/tokens/{tokenId}
+  method: delete
+  operationId: deleteAppToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/tokens
+  method: get
+  operationId: getAppTokens_1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/{appId}/tokens
+  method: post
+  operationId: createAppToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{token}/ips/{ipId}
+  method: put
+  operationId: updateAppIp
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{token}/ips/{ipId}
+  method: delete
+  operationId: deleteAppIp
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /users-web/api/v3/notifications/integrations/{updateableNotificationIntegrationId}/disable
+  method: put
+  operationId: disableUsingPUT
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /users-web/api/v3/alerts/{updateableAlertId}
+  method: delete
+  operationId: deleteAlertRuleUsingDELETE_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/tokens/{tokenId}/regenerate
+  method: post
+  operationId: regenerateAppToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/alerts
+  method: post
+  operationId: createAlertUsingPOST_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/subscriptions/{updateableSubscriptionId}
+  method: put
+  operationId: toggleEnabledUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/subscriptions/{updateableSubscriptionId}
+  method: delete
+  operationId: deleteUsingDELETE_3
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/alerts/{updateableAlertId}/enable
+  method: put
+  operationId: enableAlertRuleUsingPUT
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/types
+  method: get
+  operationId: getAppTypesUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/billing/availablePlans
+  method: get
+  operationId: listAvailablePlansUsingGET_1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/billing/invoice/{service}/{year}/{month}
+  method: get
+  operationId: getDetailedInvoiceUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/notifications/alerts
+  method: post
+  operationId: getAlertNotificationsForUserUsingPOST
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/dashboards/{dashId}/report/send
+  method: post
+  operationId: sendDashReportUsingPOST
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{token}/ips
+  method: get
+  operationId: getAppIps
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/{token}/ips
+  method: post
+  operationId: createAppIp
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/alerts
+  method: get
+  operationId: getAlertRulesForAppUsingGET_1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/notifications/integrations/{updateableNotificationIntegrationId}/enable
+  method: put
+  operationId: enableUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/subscriptions
+  method: get
+  operationId: listUsingGET_2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/billing/info/{appId}
+  method: put
+  operationId: updatePlanUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{anyStateAppId}
+  method: get
+  operationId: getUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/{anyStateAppId}
+  method: put
+  operationId: updateUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{anyStateAppId}
+  method: delete
+  operationId: deleteUsingDELETE_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/alerts/{updateableAlertId}/disable
+  method: put
+  operationId: disableAlertRuleUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /users-web/api/v3/account/password/reset
+  method: post
+  operationId: resetPasswordUsingPOST_1
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /users-web/api/v3/apps/guests
+  method: post
+  operationId: inviteAppGuestsUsingPOST_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/dashboards/{dashId}/subscription
+  method: post
+  operationId: createForDashUsingPOST_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/dashboards/{dashId}/subscription
+  method: put
+  operationId: updateForDashUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/subscription
+  method: post
+  operationId: createForAppUsingPOST_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/subscription
+  method: put
+  operationId: updateForAppUsingPUT_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps
+  method: get
+  operationId: listUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps
+  method: post
+  operationId: createExperienceApp_1
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/apps/{appId}/notifications/alerts
+  method: post
+  operationId: getAlertNotificationsForAppUsingPOST
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/users
+  method: get
+  operationId: listAppsUsersUsingGET_1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/{appId}/report/send
+  method: post
+  operationId: sendAppReportUsingPOST
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /users-web/api/v3/subscriptions
+  method: get
+  operationId: listUsingGET_5
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /users-web/api/v3/apps/{anyStateAppId}/description
+  method: put
+  operationId: updateDescriptionUsingPUT
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /logsene-reports/api/v3/apps
+  method: post
+  operationId: createLogseneApplication
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /logsene-reports/api/v3/apps/{appId}/usage/{from}/{to}
+  method: get
+  operationId: getForRangeUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /spm-reports/api/v3/apps/{appIds}/metrics/filters
+  method: get
+  operationId: getUsingGET
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /spm-reports/api/v3/apps
+  method: post
+  operationId: createSpmApplication
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - global
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /spm-reports/api/v3/apps/{appIds}/tags
+  method: get
+  operationId: getUsingGET_3
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /spm-reports/api/v3/apps/{appIds}/tagNames
+  method: get
+  operationId: getTagNamesUsingGET_1
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    scope:
+    - global
+    token:
+      max-ttl: 3600
+    audit: none

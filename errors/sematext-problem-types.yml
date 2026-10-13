@@ -1,0 +1,32 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/sematext-cloud-openapi-original.json
+- openapi/sematext-openapi.yml
+format: custom
+envelope:
+  media_type: null
+  schema: null
+coverage:
+  operations: 94
+  statuses_declared: 3
+problems:
+- status: 401
+  title: Unauthorized
+  description: Unauthorized
+  operations: 94
+  media_types: []
+  schema: null
+- status: 403
+  title: Forbidden
+  description: Forbidden
+  operations: 94
+  media_types: []
+  schema: null
+- status: 404
+  title: Not Found
+  description: Not Found
+  operations: 84
+  media_types: []
+  schema: null

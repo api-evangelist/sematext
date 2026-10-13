@@ -1,0 +1,16 @@
+generated: '2026-10-13'
+method: derived
+source: openapi/sematext-cloud-openapi-original.json, openapi/sematext-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: api_key
+  type: apiKey
+  in: header
+  parameter: Authorization
+  sources:
+  - openapi/sematext-cloud-openapi-original.json
+  - openapi/sematext-openapi.yml
