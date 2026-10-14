@@ -1,5 +1,5 @@
 generated: '2026-10-13'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/sematext/integrations
 - https://n8n.io/integrations/sematext/
@@ -7,10 +7,28 @@ source:
 - https://monid.ai/tools/sematext
 checked:
 - https://composio.dev/toolkits/sematext
+- https://github.com/marketplace?type=actions
 - https://monid.ai/tools/sematext
 - https://n8n.io/integrations/sematext/
 - https://zapier.com/apps/sematext/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: GitHub Marketplace (actions)
+  partner: github-actions
+  partner_match: aggregator
+  type: marketplace
+  marketplace: github-actions
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://github.com/marketplace/actions/sematext-synthetics-ci-cd
+  listing_count: 1
+  apps:
+  - Sematext Synthetics CI/CD
+  publisher_name: Sematext Group, Inc.
+  badges:
+  - Verified creator
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 templates: []
