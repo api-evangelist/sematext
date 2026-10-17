@@ -86,34 +86,11 @@ common:
 - type: ChangeLog
   url: https://sematext.com/docs/changelog/
 apis:
-- aid: sematext:sematext-cloud-api
-  name: Sematext Cloud API
-  description: REST API (Swagger 2.0, v3) for managing Sematext Cloud apps, app tokens,
-    allowed IPs, alert rules, notifications, report subscriptions, billing plans,
-    and Logs / Monitoring app creation and usage. Authenticated with an account API
-    key in the Authorization header (apiKey <key>). EU region served at apps.eu.sematext.com.
-  humanURL: https://sematext.com/docs/api/
-  baseURL: https://apps.sematext.com
-  tags:
-  - Observability
-  - Monitoring
-  - Logging
-  - Alerts
-  properties:
-  - type: OpenAPI
-    url: openapi/sematext-openapi.yml
-  - type: OpenAPI
-    name: OpenAPI (provider-hosted)
-    url: https://apps.sematext.com/users-web/api-docs
-  - type: APIReference
-    url: https://apps.sematext.com/api-explorer
-  - type: Documentation
-    url: https://sematext.com/docs/api/
 - aid: sematext:sematext-logs-api
   name: Sematext Logs API (Elasticsearch-compatible)
-  description: Elasticsearch-API-compatible endpoint for indexing log events (including
-    _bulk) and searching them, addressed by Logs App token. No standalone contract
-    is published; it follows the Elasticsearch API.
+  description: >-
+    Elasticsearch-API-compatible endpoint for indexing log events (including _bulk) and searching them,
+    addressed by Logs App token. No standalone contract is published; it follows the Elasticsearch API.
   humanURL: https://sematext.com/docs/logs/index-events-via-sematext-api/
   baseURL: https://logsene-receiver.sematext.com
   tags:
@@ -128,9 +105,9 @@ apis:
     url: https://sematext.com/docs/logs/search-through-the-sematext-api/
 - aid: sematext:sematext-events-api
   name: Sematext Events API
-  description: HTTP API for posting and searching events (deployments, alerts, other
-    annotations) against an App token, correlated with metrics and logs in Sematext
-    Cloud.
+  description: >-
+    HTTP API for posting and searching events (deployments, alerts, other annotations) against an App
+    token, correlated with metrics and logs in Sematext Cloud.
   humanURL: https://sematext.com/docs/events/event-api/
   baseURL: https://event-receiver.sematext.com
   tags:
@@ -139,6 +116,216 @@ apis:
   properties:
   - type: Documentation
     url: https://sematext.com/docs/events/event-api/
+- aid: sematext:sematext-alert-notifications-api
+  name: Sematext Alert Notifications API
+  description: The Alert Notifications API from Sematext — 2 operation(s) for alert notifications.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Alert Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-alert-notifications-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-alerts-api
+  name: Sematext Alerts API
+  description: The Alerts API from Sematext — 5 operation(s) for alerts.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-alerts-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-app-guests-api
+  name: Sematext App guests API
+  description: The App guests API from Sematext — 1 operation(s) for app guests.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - App guests
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-app-guests-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-app-ips-api
+  name: Sematext App IPs API
+  description: The App IPs API from Sematext — 2 operation(s) for app ips.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - App IPs
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-app-ips-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-app-tokens-api
+  name: Sematext App tokens API
+  description: The App tokens API from Sematext — 3 operation(s) for app tokens.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - App tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-app-tokens-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-apps-api
+  name: Sematext Apps API
+  description: The Apps API from Sematext — 5 operation(s) for apps.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-apps-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-billing-api
+  name: Sematext Billing API
+  description: The Billing API from Sematext — 3 operation(s) for billing.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Billing
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-billing-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-experience-app-api
+  name: Sematext Experience App API
+  description: The Experience App API from Sematext — 1 operation(s) for experience app.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Experience App
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-experience-app-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-logs-app-api
+  name: Sematext Logs App API
+  description: The Logs App API from Sematext — 1 operation(s) for logs app.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Logs App
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-logs-app-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-logs-app-usage-api
+  name: Sematext Logs App usage API
+  description: The Logs App usage API from Sematext — 1 operation(s) for logs app usage.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Logs App usage
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-logs-app-usage-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-monitoring-app-api
+  name: Sematext Monitoring App API
+  description: The Monitoring App API from Sematext — 1 operation(s) for monitoring app.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Monitoring App
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-monitoring-app-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-notifications-api
+  name: Sematext Notifications API
+  description: The Notifications API from Sematext — 2 operation(s) for notifications.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-notifications-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-reset-password-api
+  name: Sematext Reset Password API
+  description: The Reset Password API from Sematext — 1 operation(s) for reset password.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Reset Password
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-reset-password-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-subscriptions-api
+  name: Sematext Subscriptions API
+  description: The Subscriptions API from Sematext — 7 operation(s) for subscriptions.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-subscriptions-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
+- aid: sematext:sematext-tags-api
+  name: Sematext Tags API
+  description: The Tags API from Sematext — 3 operation(s) for tags.
+  humanURL: https://sematext.com/docs/api/
+  baseURL: https://apps.sematext.com
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/sematext-tags-api-openapi.yml
+  - type: APIReference
+    url: https://apps.sematext.com/api-explorer
+  - type: Documentation
+    url: https://sematext.com/docs/api/
 x-enrichment:
   date: '2026-10-13'
   status: enriched

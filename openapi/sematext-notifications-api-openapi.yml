@@ -1,0 +1,104 @@
+openapi: 3.2.0
+info:
+  title: Sematext Notifications API
+  version: v3
+  description: 'Operations tagged Notifications across 2 of this provider''s published API definitions: sematext-cloud-openapi-original.json, sematext-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: Notifications
+paths:
+  /users-web/api/v3/notifications/integrations/{updateableNotificationIntegrationId}/disable:
+    put:
+      tags:
+      - Notifications
+      summary: Disable the notification hook
+      operationId: disableUsingPUT
+      parameters:
+      - name: updateableNotificationIntegrationId
+        in: path
+        description: updateableNotificationIntegrationId
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Generic_Map_Based_Api_Response'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+  /users-web/api/v3/notifications/integrations/{updateableNotificationIntegrationId}/enable:
+    put:
+      tags:
+      - Notifications
+      summary: Enable the notification hook
+      operationId: enableUsingPUT_1
+      parameters:
+      - name: updateableNotificationIntegrationId
+        in: path
+        description: updateableNotificationIntegrationId
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Generic_Map_Based_Api_Response'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    Generic_Map_Based_Api_Response:
+      type: object
+      properties:
+        data:
+          type: object
+          properties: {}
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        message:
+          type: string
+        success:
+          type: boolean
+      description: Generic map based wrapper class for all API responses
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Authorization
+      in: header
+x-refined-from:
+- sematext-cloud-openapi-original.json
+- sematext-openapi.yml

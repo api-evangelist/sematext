@@ -1,0 +1,607 @@
+openapi: 3.2.0
+info:
+  title: Sematext Billing API
+  version: v3
+  description: 'Operations tagged Billing across 2 of this provider''s published API definitions: sematext-cloud-openapi-original.json, sematext-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: Billing
+paths:
+  /users-web/api/v3/billing/availablePlans:
+    get:
+      tags:
+      - Billing
+      summary: Get available plans
+      operationId: listAvailablePlansUsingGET_1
+      parameters:
+      - name: integrationId
+        in: query
+        description: integrationId
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: appType
+        in: query
+        description: appType
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Response data key: availablePlans, Response data type: List of Plans'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlansResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+  /users-web/api/v3/billing/invoice/{service}/{year}/{month}:
+    get:
+      tags:
+      - Billing
+      summary: Get invoice details
+      operationId: getDetailedInvoiceUsingGET
+      parameters:
+      - name: service
+        in: path
+        description: service
+        required: true
+        schema:
+          type: string
+      - name: year
+        in: path
+        description: year
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: month
+        in: path
+        description: month
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: 'Response data key: invoice, Response data type: Invoice'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+  /users-web/api/v3/billing/info/{appId}:
+    put:
+      tags:
+      - Billing
+      summary: Update plan for an app
+      operationId: updatePlanUsingPUT_1
+      parameters:
+      - name: appId
+        in: path
+        description: appId
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePlanResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BillingInfo'
+        description: dto
+        required: true
+components:
+  schemas:
+    UpdatePlanResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/UpdatePlanResponseEntry'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        message:
+          type: string
+        success:
+          type: boolean
+    PlansResponseEntry:
+      type: object
+      properties:
+        availablePlans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Plan'
+    EventDto:
+      type: object
+      properties:
+        from:
+          type: object
+          properties: {}
+        to:
+          type: object
+          properties: {}
+        type:
+          type: string
+          enum:
+          - CREATED
+          - DISABLED
+          - DELETED
+          - REACTIVATED
+          - PLAN_UPDATE
+          - PAYMENT_METHOD_UPDATE
+          - SEND_EMAIL_CHANGE
+          - AUTOMATIC_PLAN_UPGRADE_CHANGE
+          - MAX_LIMIT_CHANGE
+          - SAMPLING_CHANGE
+          - OWNERSHIP_CHANGE
+          - OWNERSHIP_ACCEPT
+          - OWNERSHIP_START
+          - OWNERSHIP_CANCEL
+          - OWNERSHIP_DECLINE
+          - PIPELINE_CREATE
+          - PIPELINE_CHANGE
+          - PIPELINE_DELETE
+          - TRIAL_END_DATE_CHANGE
+          - ALERT_RULE_CREATE
+          - BULK_ALERT_RULE_CREATE
+          - ALERT_RULE_STATUS_CHANGE
+          - ALERT_RULE_DELETE
+          - ALERT_RULE_CHANGE
+          - SYNTHETICS_MONITOR_CREATE
+          - SYNTHETICS_MONITOR_UPDATE
+          - SYNTHETICS_MONITOR_DISABLE
+          - SYNTHETICS_MONITOR_ENABLE
+          - SYNTHETICS_MONITOR_DELETE
+          - SYNTHETICS_CICD_MONITOR_CREATE
+          - SYNTHETICS_CICD_MONITOR_UPDATE
+          - SYNTHETICS_CICD_MONITOR_DISABLE
+          - SYNTHETICS_CICD_MONITOR_ENABLE
+          - SYNTHETICS_CICD_MONITOR_DELETE
+          - SYNTHETICS_MONITOR_TYPE_CHANGE
+          - AUTO_MONITORING_ENABLE
+          - AUTO_MONITORING_DISABLE
+          - AUTO_MONITORING_DESTINATION_APP_CHANGE
+          - AUTO_LOGS_ENABLE
+          - AUTO_LOGS_DISABLE
+          - AUTO_LOGS_DESTINATION_APP_CHANGE
+          - APP_GUEST_ADDED
+          - APP_GUEST_REMOVE
+          - APP_GUEST_ROLE_CHANGE
+          - AI_AGENT_MONITORING_ENABLE
+          - AI_AGENT_MONITORING_DISABLE
+    Invoice:
+      type: object
+      properties:
+        allCharges:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChargesDetailsResponseDto'
+        invoiceDate:
+          type: string
+        invoiceId:
+          type: string
+        period:
+          type: string
+        service:
+          type: string
+        totalAmount:
+          type: number
+    BillingInfo:
+      type: object
+      properties:
+        creditCardId:
+          type: integer
+          format: int64
+        maxLimit:
+          type: integer
+          format: int64
+        maxLimitSpans:
+          type: integer
+          format: int64
+        paymentMethod:
+          type: string
+        planId:
+          type: integer
+          format: int64
+    InvoiceResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/InvoiceResponseEntry'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        message:
+          type: string
+        success:
+          type: boolean
+    Plan:
+      type: object
+      properties:
+        appType:
+          type: string
+        custom:
+          type: boolean
+        dataRetentionHours:
+          type: number
+        defaultTrialPlan:
+          type: boolean
+        freeTrialDays:
+          type: integer
+          format: int64
+        id:
+          type: integer
+          format: int64
+        maxAlerts:
+          type: integer
+          format: int64
+        maxDailyEvents:
+          type: integer
+          format: int64
+        name:
+          type: string
+        planScheme:
+          type: string
+          enum:
+          - SPM_1_0
+          - SPM_2_0
+          - SEARCHENE_1_0
+          - LOGSENE_1_0
+          - LOGSENE_2_0
+          - RUM_1_0
+          - RUM_1_1
+          - RUM_EA
+          - SYNTHETICS_EA
+          - SYNTHETICS_1_0
+          - BUGZ_EA
+          - TRACES_1_0
+        sematextService:
+          type: string
+          enum:
+          - LOGSENE
+          - SPM
+          - RUM
+          - SYNTHETICS
+          - TRACES
+        trialPlan:
+          type: boolean
+    MinPeriodFeePeriod:
+      type: object
+      properties:
+        browserMonitors:
+          type: integer
+          format: int32
+        discount:
+          type: number
+        fromDate:
+          type: string
+          format: date-time
+        httpMonitors:
+          type: integer
+          format: int32
+        id:
+          type: integer
+          format: int64
+        ingestionPeriodFeeAmount:
+          type: number
+        minPeriodFeeAmount:
+          type: number
+        overagePercentage:
+          type: number
+        planDataLimit:
+          type: integer
+          format: int64
+        storagePeriodFeeAmount:
+          type: number
+        toDate:
+          type: string
+          format: date-time
+        usedPlan:
+          type: string
+        usedPlanPeriodFee:
+          type: number
+    App:
+      type: object
+      properties:
+        ajaxThreshold:
+          type: integer
+          format: int64
+        appType:
+          type: string
+        appTypeId:
+          type: integer
+          format: int64
+        creatorEmail:
+          type: string
+        creditCardExpiry:
+          type: string
+        creditCardNumber:
+          type: string
+        description:
+          type: string
+        displayStatus:
+          type: string
+        firstDataSavedDate:
+          type: integer
+          format: int64
+        id:
+          type: integer
+          format: int64
+        infraAppId:
+          type: integer
+          format: int64
+        integration:
+          $ref: '#/components/schemas/ServiceIntegration'
+        lastDataReceivedDate:
+          type: integer
+          format: int64
+        lastDataSavedDate:
+          type: integer
+          format: int64
+        loggedInUserAppRole:
+          type: string
+        monthlyInvoiceAccount:
+          type: boolean
+        name:
+          type: string
+        ownerEmail:
+          type: string
+        pageLoadThreshold:
+          type: integer
+          format: int64
+        paymentMethodId:
+          type: integer
+          format: int64
+        plan:
+          $ref: '#/components/schemas/Plan'
+        prepaidAccount:
+          type: boolean
+        readToken:
+          type: string
+        readWriteToken:
+          type: string
+        registrationDate:
+          type: integer
+          format: int64
+        status:
+          type: string
+        token:
+          type: string
+        tokens:
+          type: array
+          items:
+            type: string
+        trialEndDate:
+          type: integer
+          format: int64
+        urlGroupLimit:
+          type: integer
+          format: int32
+        userRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserRole'
+        writeToken:
+          type: string
+    ServiceIntegration:
+      type: object
+      properties:
+        appTypeId:
+          type: integer
+          format: int64
+        appTypeName:
+          type: string
+        displayName:
+          type: string
+        enabled:
+          type: boolean
+        externalProductId:
+          type: integer
+          format: int64
+        externalProductName:
+          type: string
+        id:
+          type: integer
+          format: int64
+        integrationType:
+          type: string
+        ordinal:
+          type: integer
+          format: int32
+        parentIntegrationId:
+          type: integer
+          format: int64
+        sematextService:
+          type: string
+        visible:
+          type: boolean
+    InvoiceResponseEntry:
+      type: object
+      properties:
+        invoice:
+          $ref: '#/components/schemas/Invoice'
+    UpdatePlanResponseEntry:
+      type: object
+      properties:
+        billing:
+          $ref: '#/components/schemas/UpdatePlanResponseDto'
+    UpdatePlanResponseDto:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventDto'
+        planId:
+          type: integer
+          format: int64
+    UserRole:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+          - MASTER_USER
+          - SUPER_USER
+          - OWNER
+          - ADMIN
+          - USER
+          - DEMO
+          - ANONYMOUS
+        roleStatus:
+          type: string
+          enum:
+          - INACTIVE
+          - ACTIVE
+        userEmail:
+          type: string
+    ChargesDetailsResponseDto:
+      type: object
+      properties:
+        app:
+          $ref: '#/components/schemas/App'
+        chargeBase:
+          type: string
+          enum:
+          - SUMMARIZED_USAGE
+          - MIN_MONTHLY_FEE
+          - SUM_OF_DAILY_FEES
+          - TOTAL_MONTHLY_FEE
+        dayUsageData:
+          type: array
+          items:
+            $ref: '#/components/schemas/DayUsageData'
+        monthlyFeeAmount:
+          type: number
+        periodFeePeriods:
+          type: array
+          items:
+            $ref: '#/components/schemas/MinPeriodFeePeriod'
+        totalAmount:
+          type: number
+        usageAmount:
+          type: number
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    DayUsageData:
+      type: object
+      properties:
+        aiAgentMonitoringFee:
+          type: number
+        countDailyDataPoints:
+          type: integer
+          format: int32
+        day:
+          type: string
+        discount:
+          type: number
+        dpmPerContainerHostQuota:
+          type: integer
+          format: int64
+        dpmPerHostQuota:
+          type: integer
+          format: int64
+        fixedMonthlyPrice:
+          type: number
+        fixedMonthlyPricePerHour:
+          type: number
+        freeContainersPerHost:
+          type: integer
+          format: int32
+        id:
+          type: integer
+          format: int64
+        kiloDpmOveragePricePerHour:
+          type: number
+        netmapFee:
+          type: number
+        planType:
+          type: string
+          enum:
+          - INFRA
+          - PER_AGENT
+          - FIXED_PRICE
+          - PER_VOLUME
+        pricePerContainerHostHour:
+          type: number
+        pricePerContainerHour:
+          type: number
+        pricePerServerHour:
+          type: number
+        sumNumberOfContainerHosts:
+          type: integer
+          format: int32
+        sumNumberOfContainers:
+          type: integer
+          format: int32
+        sumNumberOfServers:
+          type: integer
+          format: int32
+        usageAmount:
+          type: number
+        usedPlan:
+          type: string
+        userDiscount:
+          type: number
+    PlansResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PlansResponseEntry'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        message:
+          type: string
+        success:
+          type: boolean
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Authorization
+      in: header
+x-refined-from:
+- sematext-cloud-openapi-original.json
+- sematext-openapi.yml

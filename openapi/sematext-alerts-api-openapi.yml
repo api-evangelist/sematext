@@ -1,0 +1,485 @@
+openapi: 3.2.0
+info:
+  title: Sematext Alerts API
+  version: v3
+  description: 'Operations tagged Alerts across 2 of this provider''s published API definitions: sematext-cloud-openapi-original.json, sematext-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: Alerts
+paths:
+  /users-web/api/v3/alerts/{updateableAlertId}:
+    delete:
+      tags:
+      - Alerts
+      summary: Delete alert rule
+      operationId: deleteAlertRuleUsingDELETE_1
+      parameters:
+      - name: updateableAlertId
+        in: path
+        description: updateableAlertId
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Generic_Map_Based_Api_Response'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - api_key:
+        - global
+  /users-web/api/v3/alerts:
+    post:
+      tags:
+      - Alerts
+      summary: Create alert rule
+      operationId: createAlertUsingPOST_1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRuleResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertRule'
+        description: dto
+        required: true
+  /users-web/api/v3/alerts/{updateableAlertId}/enable:
+    put:
+      tags:
+      - Alerts
+      summary: Enable alert rule
+      operationId: enableAlertRuleUsingPUT
+      parameters:
+      - name: updateableAlertId
+        in: path
+        description: updateableAlertId
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Generic_Map_Based_Api_Response'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+  /users-web/api/v3/apps/{appId}/alerts:
+    get:
+      tags:
+      - Alerts
+      summary: Get alert rules for an app
+      operationId: getAlertRulesForAppUsingGET_1
+      parameters:
+      - name: appId
+        in: path
+        description: appId
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: tz
+        in: query
+        description: tz
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Response data key: alertRules, Response data type: List of AlertRules'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRulesResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+  /users-web/api/v3/alerts/{updateableAlertId}/disable:
+    put:
+      tags:
+      - Alerts
+      summary: Disable alert rule
+      operationId: disableAlertRuleUsingPUT_1
+      parameters:
+      - name: updateableAlertId
+        in: path
+        description: updateableAlertId
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Generic_Map_Based_Api_Response'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+components:
+  schemas:
+    AlertRulesResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AlertRulesResponseEntry'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        message:
+          type: string
+        success:
+          type: boolean
+    UserPermissions:
+      type: object
+      properties:
+        canDelete:
+          type: boolean
+        canEdit:
+          type: boolean
+        canView:
+          type: boolean
+    Generic_Map_Based_Api_Response:
+      type: object
+      properties:
+        data:
+          type: object
+          properties: {}
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        message:
+          type: string
+        success:
+          type: boolean
+      description: Generic map based wrapper class for all API responses
+    AlertRuleScheduleWeekdayDto:
+      type: object
+      properties:
+        day:
+          type: string
+        index:
+          type: integer
+          format: int32
+        intervals:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertRuleScheduleTimeRangeDto'
+        label:
+          type: string
+        type:
+          type: string
+    AlertRuleScheduleTimeRangeDto:
+      type: object
+      properties:
+        end:
+          type: string
+        start:
+          type: string
+    AlertRuleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AlertRuleResponseEntry'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        message:
+          type: string
+        success:
+          type: boolean
+    AlertRulesResponseEntry:
+      type: object
+      properties:
+        alertRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertRule'
+    NotificationIntegration:
+      type: object
+      properties:
+        applicability:
+          type: string
+          enum:
+          - NONE
+          - USE_ALWAYS
+        createDate:
+          type: string
+          format: date-time
+        createdByOwner:
+          type: boolean
+        creatorId:
+          type: integer
+          format: int64
+        id:
+          type: integer
+          format: int64
+        integrationType:
+          type: string
+          enum:
+          - PAGER_DUTY
+          - NAGIOS
+          - WEB_HOOKS
+          - WEB_HOOKS_TEMPLATE
+          - HIP_CHAT
+          - EMAIL_LIST
+          - TEMPORARY_EMAIL_LIST
+        name:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        state:
+          type: string
+          enum:
+          - ACTIVE
+          - DISABLED
+          - DELETED
+        userId:
+          type: integer
+          format: int64
+    AlertRule:
+      type: object
+      properties:
+        accountEmail:
+          type: string
+          readOnly: true
+        allowedAppTypes:
+          type: array
+          items:
+            type: integer
+            format: int64
+        analyzingTime:
+          type: string
+        appDisplayState:
+          type: string
+          readOnly: true
+        appId:
+          type: integer
+          format: int64
+        appName:
+          type: string
+          readOnly: true
+        appState:
+          type: string
+          readOnly: true
+        appToken:
+          type: string
+          readOnly: true
+        appType:
+          type: string
+          readOnly: true
+        backToNormalNeeded:
+          type: boolean
+        chartKey:
+          type: string
+        color:
+          type: string
+        creatorEmail:
+          type: string
+          readOnly: true
+        defaultAggType:
+          type: string
+          readOnly: true
+        description:
+          type: string
+        disallowedAppTypes:
+          type: array
+          items:
+            type: integer
+            format: int64
+        enabled:
+          type: boolean
+        estimateOperation:
+          type: string
+          enum:
+          - LESS
+          - MORE
+          - EQUAL
+          - UN_EQUAL
+          - LESS_OR_EQUAL
+          - MORE_OR_EQUAL
+        estimateValue:
+          type: number
+          format: double
+        filterValues:
+          type: string
+        filterValuesObj:
+          type: array
+          items:
+            $ref: '#/components/schemas/FilterValue'
+        ignoreRegularEventsEnabled:
+          type: boolean
+        integrations:
+          type: string
+          readOnly: true
+        lastDataReceivedDate:
+          type: integer
+          format: int64
+          readOnly: true
+        lastSent:
+          type: integer
+          format: int64
+          readOnly: true
+        lastTriggered:
+          type: integer
+          format: int64
+          readOnly: true
+        metadata:
+          type: object
+          properties: {}
+        metricKey:
+          type: string
+          readOnly: true
+        metricLabel:
+          type: string
+        minDelayBetweenNotificationsInMinutes:
+          type: string
+        name:
+          type: string
+        notificationEmails:
+          type: array
+          items:
+            type: string
+        notificationIntegrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/NotificationIntegration'
+        notificationsEnabled:
+          type: boolean
+        priority:
+          type: string
+          enum:
+          - INFO
+          - ERROR
+          - WARN
+          - CRITICAL
+        query:
+          type: string
+        reportName:
+          type: string
+        ruleKey:
+          type: integer
+          format: int64
+          readOnly: true
+        ruleType:
+          type: string
+        runbook:
+          type: string
+        savedQueryId:
+          type: integer
+          format: int64
+          readOnly: true
+        schedule:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertRuleScheduleWeekdayDto'
+        sematextService:
+          type: string
+          readOnly: true
+        sendToEmail:
+          type: string
+        timezone:
+          type: string
+        useOnlyAlertRuleIntegrations:
+          type: boolean
+        userPermissions:
+          $ref: '#/components/schemas/UserPermissions'
+        valueColumnName:
+          type: string
+          readOnly: true
+        valueName:
+          type: string
+          readOnly: true
+    AlertRuleResponseEntry:
+      type: object
+      properties:
+        alertRule:
+          $ref: '#/components/schemas/AlertRule'
+    FilterValue:
+      type: object
+      properties:
+        aggType:
+          type: string
+        filterName:
+          type: string
+        key:
+          type: string
+        label:
+          type: string
+        name:
+          type: string
+        values:
+          type: array
+          items:
+            type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Authorization
+      in: header
+x-refined-from:
+- sematext-cloud-openapi-original.json
+- sematext-openapi.yml

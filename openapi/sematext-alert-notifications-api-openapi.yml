@@ -1,0 +1,152 @@
+openapi: 3.2.0
+info:
+  title: Sematext Alert Notifications API
+  version: v3
+  description: 'Operations tagged Alert Notifications across 2 of this provider''s published API definitions: sematext-cloud-openapi-original.json, sematext-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: Alert Notifications
+paths:
+  /users-web/api/v3/notifications/alerts:
+    post:
+      tags:
+      - Alert Notifications
+      summary: Get alert notifications for a user
+      description: Default value of interval is 1d
+      operationId: getAlertNotificationsForUserUsingPOST
+      responses:
+        '200':
+          description: 'Response key: notifications, Response data type: List of AlertNotification'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertNotificationRequest'
+        description: Time Interval
+        required: true
+  /users-web/api/v3/apps/{appId}/notifications/alerts:
+    post:
+      tags:
+      - Alert Notifications
+      summary: Get alert notifications for an app
+      description: Default value of interval is 1d
+      operationId: getAlertNotificationsForAppUsingPOST
+      parameters:
+      - name: appId
+        in: path
+        description: appId
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: 'Response key: notifications, Response data type: List of AlertNotification'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotificationsResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertNotificationRequest'
+        description: Time Interval
+        required: true
+components:
+  schemas:
+    AlertNotificationRequest:
+      type: object
+      properties:
+        defaultInterval:
+          type: integer
+          format: int64
+        end:
+          type: string
+          description: End time of interval. Can be expressed as timestamp in milliseconds or UTC date in yyyy-MM-dd HH:mm:ss format
+        interval:
+          type: string
+        start:
+          type: string
+          description: Start time of interval. Can be expressed as timestamp in milliseconds or UTC date in yyyy-MM-dd HH:mm:ss format
+    NotificationsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/NotificationsResponseEntry'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        message:
+          type: string
+        success:
+          type: boolean
+    NotificationsResponseEntry:
+      type: object
+      properties:
+        end:
+          type: string
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertNotification'
+        start:
+          type: string
+    AlertNotification:
+      type: object
+      properties:
+        appName:
+          type: string
+        appType:
+          type: string
+        backToNormal:
+          type: boolean
+        createTime:
+          type: string
+        sent:
+          type: boolean
+        text:
+          type: string
+        when:
+          type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Authorization
+      in: header
+x-refined-from:
+- sematext-cloud-openapi-original.json
+- sematext-openapi.yml

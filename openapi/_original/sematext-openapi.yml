@@ -1,3 +1,5 @@
+# x-archived-from: sematext-openapi.yml
+# x-archived-on: 2026-10-17
 swagger: '2.0'
 info:
   description: 'API Explorer provides access and documentation for Sematext REST API.

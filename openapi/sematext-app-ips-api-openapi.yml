@@ -1,0 +1,198 @@
+openapi: 3.2.0
+info:
+  title: Sematext App IPs API
+  version: v3
+  description: 'Operations tagged App IPs across 2 of this provider''s published API definitions: sematext-cloud-openapi-original.json, sematext-openapi.yml. Each path carries the servers of the definition it was published in.'
+tags:
+- name: App IPs
+paths:
+  /users-web/api/v3/apps/{token}/ips/{ipId}:
+    put:
+      tags:
+      - App IPs
+      summary: Replace an authorized source IP of a Logs App
+      description: The new IP is added before the old one is removed. Alias tokens need write permission.
+      operationId: updateAppIp
+      parameters:
+      - name: token
+        in: path
+        description: App token or an enabled token alias
+        required: true
+        schema:
+          type: string
+      - name: ipId
+        in: path
+        description: Id of the IP to replace
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: 'Response data key: ip, Response data type: {id, ip} of the new IP'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Generic_Map_Based_Api_Response'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IPDto'
+        description: dto
+        required: true
+    delete:
+      tags:
+      - App IPs
+      summary: Revoke an authorized source IP of a Logs App
+      description: Alias tokens need write permission.
+      operationId: deleteAppIp
+      parameters:
+      - name: token
+        in: path
+        description: App token or an enabled token alias
+        required: true
+        schema:
+          type: string
+      - name: ipId
+        in: path
+        description: Id of the IP to revoke
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Status of operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Generic_Map_Based_Api_Response'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+      - api_key:
+        - global
+  /users-web/api/v3/apps/{token}/ips:
+    get:
+      tags:
+      - App IPs
+      summary: List authorized source IPs of a Logs App
+      description: Alias tokens need read permission.
+      operationId: getAppIps
+      parameters:
+      - name: token
+        in: path
+        description: App token or an enabled token alias
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Response data key: ips, Response data type: List of {id, ip}'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Generic_Map_Based_Api_Response'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+    post:
+      tags:
+      - App IPs
+      summary: Authorize a source IP for a Logs App
+      description: IPv4 or IPv6; an IP can be authorized for one App only. Alias tokens need write permission.
+      operationId: createAppIp
+      parameters:
+      - name: token
+        in: path
+        description: App token or an enabled token alias
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 'Response data key: ip, Response data type: {id, ip}'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Generic_Map_Based_Api_Response'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - api_key:
+        - global
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IPDto'
+        description: dto
+        required: true
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    IPDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        ip:
+          type: string
+    Generic_Map_Based_Api_Response:
+      type: object
+      properties:
+        data:
+          type: object
+          properties: {}
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+        message:
+          type: string
+        success:
+          type: boolean
+      description: Generic map based wrapper class for all API responses
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Authorization
+      in: header
+x-refined-from:
+- sematext-cloud-openapi-original.json
+- sematext-openapi.yml
