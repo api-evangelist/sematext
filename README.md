@@ -64,5 +64,131 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Sematext is a company surfaced via the API Evangelist harvest backlog (source: market-gap:search-api,observability) and added to the network as a stub for full-pipeline profiling.
-- https://sematext.com
+Sematext is an observability company offering Sematext Cloud, a SaaS platform for log management, infrastructure and application monitoring, tracing, synthetic monitoring and real user monitoring, with Elasticsearch-API-compatible log ingestion and search and professional Solr / Elasticsearch / OpenSearch support. Its Sematext Cloud REST API (v3) manages apps, tokens, alerts, subscriptions and billing, and is documented in a public Swagger API Explorer in US and EU regions.
+
+**Areas:** Company · Observability · Monitoring · Logging · Log Management · Elasticsearch · Tracing · Synthetic Monitoring · OpenTelemetry
+
+## Sematext on APIs.io
+
+Everything profiled for Sematext is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sematext/](https://apis.io/providers/sematext/)** — or go straight to one of the APIs or properties below.
+
+### APIs (17)
+
+- [Sematext Logs API (Elasticsearch-compatible)](https://apis.io/apis/sematext/sematext-logs-api/) — Elasticsearch-API-compatible endpoint for indexing log events (including _bulk) and searching them, addressed by Logs App token. No standalone contract is…
+- [Sematext Events API](https://apis.io/apis/sematext/sematext-events-api/) — HTTP API for posting and searching events (deployments, alerts, other annotations) against an App token, correlated with metrics and logs in Sematext Cloud.
+- [Sematext Alert Notifications API](https://apis.io/apis/sematext/sematext-alert-notifications-api/) — The Alert Notifications API from Sematext — 2 operation(s) for alert notifications.
+- [Sematext Alerts API](https://apis.io/apis/sematext/sematext-alerts-api/) — The Alerts API from Sematext — 5 operation(s) for alerts.
+- [Sematext App guests API](https://apis.io/apis/sematext/sematext-app-guests-api/) — The App guests API from Sematext — 1 operation(s) for app guests.
+- [Sematext App IPs API](https://apis.io/apis/sematext/sematext-app-ips-api/) — The App IPs API from Sematext — 2 operation(s) for app ips.
+- [Sematext App tokens API](https://apis.io/apis/sematext/sematext-app-tokens-api/) — The App tokens API from Sematext — 3 operation(s) for app tokens.
+- [Sematext Apps API](https://apis.io/apis/sematext/sematext-apps-api/) — The Apps API from Sematext — 5 operation(s) for apps.
+- [Sematext Billing API](https://apis.io/apis/sematext/sematext-billing-api/) — The Billing API from Sematext — 3 operation(s) for billing.
+- [Sematext Experience App API](https://apis.io/apis/sematext/sematext-experience-app-api/) — The Experience App API from Sematext — 1 operation(s) for experience app.
+- [Sematext Logs App API](https://apis.io/apis/sematext/sematext-logs-app-api/) — The Logs App API from Sematext — 1 operation(s) for logs app.
+- [Sematext Logs App usage API](https://apis.io/apis/sematext/sematext-logs-app-usage-api/) — The Logs App usage API from Sematext — 1 operation(s) for logs app usage.
+- [Sematext Monitoring App API](https://apis.io/apis/sematext/sematext-monitoring-app-api/) — The Monitoring App API from Sematext — 1 operation(s) for monitoring app.
+- [Sematext Notifications API](https://apis.io/apis/sematext/sematext-notifications-api/) — The Notifications API from Sematext — 2 operation(s) for notifications.
+- [Sematext Reset Password API](https://apis.io/apis/sematext/sematext-reset-password-api/) — The Reset Password API from Sematext — 1 operation(s) for reset password.
+- [Sematext Subscriptions API](https://apis.io/apis/sematext/sematext-subscriptions-api/) — The Subscriptions API from Sematext — 7 operation(s) for subscriptions.
+- [Sematext Tags API](https://apis.io/apis/sematext/sematext-tags-api/) — The Tags API from Sematext — 3 operation(s) for tags.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [sematext-mcp.yml](https://apis.io/servers/sematext/sematext-mcp-yml/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Sematext Agentic Access](https://apis.io/agentic-access/sematext/sematext-agentic-access/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Sematext API Rules](https://apis.io/rules/sematext/sematext-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Sematext Authentication](https://apis.io/security/sematext/sematext-authentication/)
+- [Sematext Domain Security](https://apis.io/security/sematext/sematext-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://sematext.com)
+- [Documentation](https://sematext.com/docs/)
+- [Getting started](https://sematext.com/docs/logs/quick-start/)
+- [API reference](https://apps.sematext.com/api-explorer)
+- [Pricing](https://sematext.com/pricing/)
+- [Support](https://sematext.com/support/)
+- [Changelog](https://sematext.com/docs/changelog/)
+- [Blog](https://sematext.com/blog)
+- [Terms of service](https://sematext.com/legal/terms-of-service/)
+- [Privacy policy](https://sematext.com/legal/privacy/)
+- [GitHub](https://github.com/sematext)
+- [Status](https://status.sematext.com/)
+
+## API Evangelist rating
+
+**Kin Score 45.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 40.7 |
+| Contract governance | 22.0 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 54.8 |
+| Access clarity | 44.7 |
+
+**Agent readiness 18.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | mostly (partial credit) |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sematext/](https://apis.io/providers/sematext/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Sematext: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sematext/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
